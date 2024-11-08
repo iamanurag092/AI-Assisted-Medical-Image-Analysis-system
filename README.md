@@ -52,6 +52,7 @@ This project focuses on the development of an AI-assisted medical image analysis
 
 You can check out the live demo of the application here:  
 [http://139.84.218.53](http://139.84.218.53)
+(Deployed using Vultr Cloud Services)
 
 *Note: After uploading the Chest X-Ray image you might not be able to see on the web app, it will be uploaded and you can click on Upload and Analyze button to see the prediction.
 
