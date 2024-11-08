@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Medical Image</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f7;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .x-ray {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        /* Logo Image */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            z-index: 2;
+        }
+
+        .content {
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+           height: 100vh;
+           z-index: 1;
+           position: relative;
+        }
+
+        h1 {
+            color: #333;
+            font-weight: 700;
+            font-size: 26px;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 100%;
+            max-width: 450px;
+            z-index: 1;
+        }
+
+        input[type="file"] {
+            display: none; /* Hide default file input */
+        }
+
+        .custom-file-upload {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 15px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        /* Style for displaying prediction result */
+        .prediction-result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+   <!-- Logo Image -->
+   <img class="logo" src="DALL·E 2024-09-14 12.17.04 - A modern and professional logo for a team named 'Code Capitalists,' worki.webp" alt="Logo">
+
+   <!-- Background X-ray Image -->
+   <img class="x-ray" src="x-ray.jpg.jpeg.jpg" alt="Chest X-Ray">
+
+   <div class="content">
+       <form method="POST" enctype="multipart/form-data">
+           <h1>Upload a Chest X-Ray Image for Pneumonia Detection</h1>
+           
+           <!-- File input field (hidden) -->
+           <input type="file" name="file" id="file-upload">
+
+           <!-- Custom file upload button -->
+           <label for="file-upload" class="custom-file-upload">
+               Choose Image
+           </label>
+           
+           <!-- Submit button -->
+           <input type="submit" value="Upload and Analyze">
+       </form>
+
+       <!-- Display Prediction Result -->
+       {% if prediction %}
+           <div class="prediction-result">
+               <h2>Prediction: {{ prediction }}</h2>
+           </div>
+       {% endif %}
+   </div>
+</body>
+</html>
